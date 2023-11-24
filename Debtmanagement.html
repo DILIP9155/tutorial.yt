@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <title>Debt Management</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color:rgb(74, 74, 177);
+    margin: 0;
+    padding: 0;
+    background-image:url("https://img.freepik.com/premium-photo/3d-rendering-business-financial-management-plan-money-gold-growing-strategy-concept-3d-illustration_503956-329.jpg") ;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#debtList {
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Debt Management</h1>
+        <form id="debtForm">
+            <label for="debtAmount">Enter Debt Amount:</label>
+            <input type="number" id="debtAmount" required>
+            
+            <label for="debtDescription">Debt Description:</label>
+            <input type="text" id="debtDescription" required>
+
+            <button type="button" onclick="addDebt()">Add Debt</button>
+        </form>
+
+        <div id="debtList">
+            <!-- Debt items will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        function addDebt() {
+    var debtAmount = document.getElementById('debtAmount').value;
+    var debtDescription = document.getElementById('debtDescription').value;
+
+    if (debtAmount && debtDescription) {
+        var debtItem = document.createElement('div');
+        debtItem.className = 'debt-item';
+        debtItem.innerHTML = `<strong>${debtDescription}:</strong> $${debtAmount}`;
+
+        document.getElementById('debtList').appendChild(debtItem);
+
+        // You can add additional logic here, such as updating a total debt amount.
+    }
+
+    // Clear the form fields
+    document.getElementById('debtAmount').value = '';
+    document.getElementById('debtDescription').value = '';
+}
+
+    </script>
+</body>
+</html>
